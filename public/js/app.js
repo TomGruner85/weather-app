@@ -28,6 +28,6 @@ weatherForm.addEventListener('submit', (event) => {
             return messageOne.textContent = error
         }
         messageOne.textContent = location
-        messageTwo.textContent = weather.weather_descriptions[0] + ". It is " + weather.temperature + " degrees out. But it feels like " + weather.feelslike + " degrees"
+        messageTwo.textContent = weather.weather_descriptions[0] + ". It is " + weather.temperature + " degrees, with " + weather.humidity + "% humidity. But it feels like " + weather.feelslike + " degrees"
     })
 })
