@@ -33,12 +33,12 @@ const messageTwo = document.getElementById('messageTwo')
 weatherForm.addEventListener('submit', async (event) => {
     event.preventDefault()
 
-    const location = search.value
+    const address = search.value
 
     messageOne.textContent = 'Loading...'
     messageTwo.textContent = ''
     try{
-        const {location, weather} = await fetchData(location)
+        const {location, weather} = await fetchData(address)
         messageOne.textContent = location
         messageTwo.textContent = weather.weather_descriptions[0] + ". It is " + weather.temperature + " degrees, with " + weather.humidity + "% humidity. But it feels like " + weather.feelslike + " degrees"
 
