@@ -42,31 +42,44 @@ app.get('/help', (req, res) => {
     })
 })
 
-app.get('/weather', (req, res) => {
+app.get('/weather', async (req, res) => {
     if(!req.query.address){
         return res.send({
             error: 'You must provide an address!'
         })
     }
-    geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
-        if(error){
-            return res.send({
-                error
-            })
-        }
-        forecast(latitude,longitude, (error, response) => {
-            if(error){
-                return res.send({
-                    error
-                })
-            }
-            res.send({
-                address: req.query.address,
-                location,
-                weather: response
-            })
+
+    try{
+        const {latitude, longitude, location} = await geocode(req.query.address)
+        const forecastResponse = await forecast(latitude,longitude)
+
+        res.send({
+            location,
+            weather: forecastResponse
         })
-    })
+    }catch(e){
+        res.send({e})
+    }
+    
+    // geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
+    //     if(error){
+    //         return res.send({
+    //             error
+    //         })
+    //     }
+    //     forecast(latitude,longitude, (error, response) => {
+    //         if(error){
+    //             return res.send({
+    //                 error
+    //             })
+    //         }
+    //         res.send({
+    //             address: req.query.address,
+    //             location,
+    //             weather: response
+    //         })
+    //     })
+    // })
     
 })
 
