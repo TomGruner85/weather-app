@@ -5,25 +5,11 @@ const fetchData = (address) => {
                 if(data.error){
                     reject(data.error);
                 }
-                
                 resolve(data);
             })
         })
     })
 }
-
-// const fetchData = (address, callback) => {
-    // fetch('/weather?address=' + address).then((response) => {
-    //     response.json().then((data) => {
-    //         if(data.error){
-    //             return callback(data.error, undefined);
-    //         }
-            
-    //         callback(undefined, data);
-    //     })
-    // })
-// }
-
 
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')

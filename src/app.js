@@ -60,27 +60,6 @@ app.get('/weather', async (req, res) => {
     }catch(e){
         res.send({e})
     }
-    
-    // geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
-    //     if(error){
-    //         return res.send({
-    //             error
-    //         })
-    //     }
-    //     forecast(latitude,longitude, (error, response) => {
-    //         if(error){
-    //             return res.send({
-    //                 error
-    //             })
-    //         }
-    //         res.send({
-    //             address: req.query.address,
-    //             location,
-    //             weather: response
-    //         })
-    //     })
-    // })
-    
 })
 
 app.get('/products', (req, res) =>{
