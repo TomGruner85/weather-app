@@ -1,1 +1,1 @@
-A REST API to check the weather forcast, based on your current location
+An API to check the weather forcast, based on your current location
